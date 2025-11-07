@@ -18,29 +18,38 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(fullName.value);
 
     // name validation
+    // used bootstrap validation classes
     if (fullName.value.trim() === "") {
+       // adding the is-valid class 
       fullName.classList.add("is-invalid");
       validation = false;
     } else {
+      // removing the class
       fullName.classList.remove("is-invalid");
       fullName.classList.add("is-valid");
     }
 
     // email validation
+    // email validation symbols
     const emailsymbols = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    // checking if the email matches the pattern in emailsymbols
     if (!emailsymbols.test(email.value.trim())) {
+      // adding the is-valid class  
       email.classList.add("is-invalid");
       validation = false;
     } else {
+      // removing the class
       email.classList.remove("is-invalid");
       email.classList.add("is-valid");
     }
 
     // password validation
     if (password.value.trim().length < 6) {
+      // adding the is-valid class
       password.classList.add("is-invalid");
       validation = false;
     } else {
+      // removing the class
       password.classList.remove("is-invalid");
       password.classList.add("is-valid");
     }
@@ -50,9 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
       password.value !== confirmPassword.value ||
       confirmPassword.value === ""
     ) {
+      // adding the is-valid class
       confirmPassword.classList.add("is-invalid");
       validation = false;
     } else {
+      // removing the class
       confirmPassword.classList.remove("is-invalid");
       confirmPassword.classList.add("is-valid");
     }
@@ -60,9 +71,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // terms check box
 
     if (!termsCheckbox.checked) {
+      // adding the is-valid class
       termsCheckbox.classList.add("is-invalid");
       validation = false;
     } else {
+      // removing the class
       termsCheckbox.classList.remove("is-invalid");
     }
 
@@ -83,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
         mainBody.appendChild(mainForm);
         confirmation.remove();
         signupForm.reset();
-        // document.querySelectorAll(".is-valid").forEach(el => el.classList.remove("is-valid"));
       });
     } else {
       form.classList.add("was-validated");
@@ -95,12 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
   signIn.addEventListener("click", () => {
     // console.log("signin working");
     mainForm.remove();
+    // creating new element 
     let noaccount = document.createElement("div");
     noaccount.className = "confirm_box";
     noaccount.innerHTML =
       '<div class="d-flex flex-column align-items-center justify-content-center"><h4 class="text-white">⚠️ Please Create a new Account !</h4><button style="width: 90px; height: 40px; border: none;" class="bg-primary rounded-2 mt-4 text-white " id="noresetbtn">Sign Up</button></div>';
     document.body.appendChild(noaccount);
-
+    // adding click event to the button
     document.querySelector("#noresetbtn").addEventListener("click", () => {
       noaccount.remove();
       mainBody.appendChild(mainForm);
