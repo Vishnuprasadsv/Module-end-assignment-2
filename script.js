@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const termsConditions = document.getElementById("termsConditions");
 
   signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
     let validation = true;
 
     console.log(fullName.value);
